@@ -9,7 +9,7 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
-   
+
    Using an array is much easier with it's built in append, pop, and len methods as opposed to building them out manually
 """
 
@@ -43,7 +43,7 @@ class Stack:
 
         # Linked List Implementation
         new_node = Node(value)
-        # If the list is empty, set the head node and it's .next value to be the value
+        # If the list is empty, set the head node and its .next value to be the value
         if self.head is None:
             self.head = new_node
             self.head.next = new_node

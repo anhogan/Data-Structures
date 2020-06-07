@@ -23,16 +23,22 @@ O(1)
 ## Queue
 
 1. What is the runtime complexity of `enqueue` using a list?
+O(1)
 
 2. What is the runtime complexity of `enqueue` using a linked list?
+O(1)
 
 3. What is the runtime complexity of `dequeue` using a list?
+O(1)
 
 4. What is the runtime complexity of `dequeue` using a linked list?
+O(1)
 
 5. What is the runtime complexity of `len` using a list?
+O(1)
 
 6. What is the runtime complexity of `len` using a linked list?
+O(1)
 
 ## Doubly Linked List
 
