@@ -84,12 +84,12 @@ class LinkedList:
         max_value = current.get_value()
 
     return max_value
-​
-    # Recursive solution
-    # def search(node):
-    #   if node.get_value() == value:
-    #     return True
-    #   if not node.get_next():
-    #     return False
-    #   return search(node.get_next())
-    # return search(self.head)
+
+# Recursive solution
+# def search(node):
+#   if node.get_value() == value:
+#     return True
+#   if not node.get_next():
+#     return False
+#   return search(node.get_next())
+# return search(self.head)
