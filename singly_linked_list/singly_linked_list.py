@@ -82,6 +82,8 @@ class LinkedList:
     while current:
       if current.get_value() > max_value:
         max_value = current.get_value()
+      
+      current = current.next
 
     return max_value
 
