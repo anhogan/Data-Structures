@@ -12,7 +12,7 @@ O(1)
 O(1)
 
 4. What is the runtime complexity of `pop` using a linked list?
-O(n)
+O(1)
 
 5. What is the runtime complexity of `len` using a list?
 O(1)
