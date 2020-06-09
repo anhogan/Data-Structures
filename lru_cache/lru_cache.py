@@ -1,3 +1,6 @@
+from collections import OrderedDict
+# OrderedDict works the same as a dict, but keeps a timestamp of all the entries. Updating data won't move it's stack position but removing and readding it will put it at the end
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +10,8 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.cache = OrderedDict()
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +21,15 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        # Determine if key exists in the cache
+        # If not, return None
+        # If it does, pop and update cache with the data to put it at the back
+        if key not in self.cache:
+            return None
+        else:
+            value = self.cache[key]
+            self.cache.move_to_end(key)
+            return value
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +42,8 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        # Add, or update if it exists, the key with the value
+        self.cache[key] = value
+        # If the length is not over the limit, remove the oldest entry
+        if len(self.cache) > self.limit:
+            self.cache.popitem(last=False)
