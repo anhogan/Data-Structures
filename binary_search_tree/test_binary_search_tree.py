@@ -54,6 +54,7 @@ class BinarySearchTreeTests(unittest.TestCase):
 
         self.bst.for_each(cb)
 
+        print(arr)
         self.assertTrue(5 in arr)
         self.assertTrue(v1 in arr)
         self.assertTrue(v2 in arr)
