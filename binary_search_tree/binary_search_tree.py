@@ -59,20 +59,17 @@ class BSTNode:
             return value
 
     def for_each(self, fn):
+        # Breadth-first traversal to call function on every node
         current = [self]
-
         while current:
-            # Set an empty list for right and left nodes of each node in current
             next_level = []
             for node in current:
                 fn(node.value)
-                # Add left and right pointers if applicable
                 if node.left:
                     next_level.append(node.left)
                 if node.right:
                     next_level.append(node.right)
 
-            # Set current to next_level list
             current = next_level  
 
     # Part 2 -----------------------
@@ -89,6 +86,9 @@ class BSTNode:
 
     def bft_print(self, node):
         # Breadth-First Traversal goes through each node level by level
+        if node is None:
+            return
+
         current = [node]
         while current:
             next_level = []
@@ -101,8 +101,6 @@ class BSTNode:
 
             current = next_level  
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
     def dft_print(self, node):
         # Depth-First Traversal is iterative and goes through the left side first followed by the right, starts at designated node
         if node is None:
