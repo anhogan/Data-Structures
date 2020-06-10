@@ -77,13 +77,17 @@ O(1)
 
 ## Binary Search Tree
 
-1. What is the runtime complexity of `insert`? 
+1. What is the runtime complexity of `insert`?
+O(log n)
 
 2. What is the runtime complexity of `contains`?
+O(log n)
 
-3. What is the runtime complexity of `get_max`? 
+3. What is the runtime complexity of `get_max`?
+O(n)
 
 4. What is the runtime complexity of `for_each`?
+O(n)
     
 ## Heap
 

@@ -60,14 +60,12 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        # Set self to be starting list
         current = [self]
 
         while current:
             # Set an empty list for right and left nodes of each node in current
             next_level = []
             for node in current:
-                # Call function on node
                 fn(node.value)
 
                 # Add left and right pointers if applicable
