@@ -66,11 +66,9 @@ class BSTNode:
             next_level = []
             for node in current:
                 fn(node.value)
-
                 # Add left and right pointers if applicable
                 if node.left:
                     next_level.append(node.left)
-
                 if node.right:
                     next_level.append(node.right)
 
@@ -79,24 +77,25 @@ class BSTNode:
 
     # Part 2 -----------------------
 
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # In-Order goes Left > Root > Right
+        # Used to sort list by starting with smallest value and working up
+        if node is None:
+            return
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
+        node.in_order_print(node.left)
+        print(node.value)
+        node.in_order_print(node.right)
+
     def bft_print(self, node):
+        # Breadth-First Traversal goes through each node level by level
         current = [node]
-
         while current:
             next_level = []
             for node in current:
                 print(node.value)
-
                 if node.left:
                     next_level.append(node.left)
-
                 if node.right:
                     next_level.append(node.right)
 
@@ -105,15 +104,38 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # Depth-First Traversal is iterative and goes through the left side first followed by the right, starts at designated node
+        if node is None:
+            return
+        
+        current = [node]
+        while current:
+            curr_node = current.pop()
+            print(curr_node.value)
 
+            if curr_node.right:
+                current.append(curr_node.right)
+            if curr_node.left:
+                current.append(curr_node.left)
+        
     # Stretch Goals -------------------------
-    # Note: Research may be required
 
-    # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        # Pre-Order goes Root > Left > Right
+        # Used to create a copy of the tree by going from root, down the left, then down the right
+        if node is None:
+            return
+            
+        print(node.value)    
+        node.pre_order_dft(node.left)
+        node.pre_order_dft(node.right)
 
-    # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        # Post-Order goes Left > Right > Root
+        # Used to delete the tree by removing all child nodes and ending with the root
+        if node is None:
+            return
+            
+        node.post_order_dft(node.left)
+        node.post_order_dft(node.right)
+        print(node.value)
