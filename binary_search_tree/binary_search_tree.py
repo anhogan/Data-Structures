@@ -58,7 +58,6 @@ class BSTNode:
             
             return value
 
-    # Call the function `fn` on the value of each node
     def for_each(self, fn):
         current = [self]
 
@@ -88,7 +87,20 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        current = [node]
+
+        while current:
+            next_level = []
+            for node in current:
+                print(node.value)
+
+                if node.left:
+                    next_level.append(node.left)
+
+                if node.right:
+                    next_level.append(node.right)
+
+            current = next_level  
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
