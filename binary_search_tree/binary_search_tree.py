@@ -113,6 +113,7 @@ class BSTNode:
 
     def bft_print(self, node):
         # Breadth-First Traversal goes through each node level by level
+        # Uses a queue and a pointer
         if node is None:
             return
 
@@ -130,6 +131,7 @@ class BSTNode:
 
     def dft_print(self, node):
         # Depth-First Traversal is iterative and goes through the left side first followed by the right, starts at designated node
+        # Uses a stack and a pointer
         if node is None:
             return
         
