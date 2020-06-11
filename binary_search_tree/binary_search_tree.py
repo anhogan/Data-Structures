@@ -45,6 +45,20 @@ class BSTNode:
             else:
                 return False
 
+        # CLASS SOLUTION
+        # if target == self.value:
+        #     return True
+        # if target >= self.value:
+        #     if self.right is None:
+        #         return False
+        #     else:
+        #         return self.right.contains(target)
+        # if target < self.value:
+        #     if self.left is None:
+        #         return False
+        #     else:
+        #         return self.left.contains(target)
+
     def get_max(self):
         if self.right is None:
             return self.value
@@ -57,6 +71,12 @@ class BSTNode:
                 value = current.value
             
             return value
+
+        # CLASS SOLUTION
+        # if self.right is None:
+        #     return self.value
+        # else:
+        #     return self.righ.get_max()
 
     def for_each(self, fn):
         # Breadth-first traversal to call function on every node
@@ -71,6 +91,13 @@ class BSTNode:
                     next_level.append(node.right)
 
             current = next_level  
+
+        # CLASS SOLUTION
+        # fn(self.value)
+        # if self.right is not None:
+        #     self.right.for_each(fn)
+        # if self.left is not None:
+        #     self.left.for_each(fn)
 
     # Part 2 -----------------------
 
