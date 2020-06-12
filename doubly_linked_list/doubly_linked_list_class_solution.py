@@ -67,24 +67,6 @@ class DoublyLinkedList:
         self.delete(self.head)
         return value
 
-        # WITHOUT A DELETE METHOD
-        # if self.head is None:
-        #     self.tail = None
-        #     return None
-
-        # if self.head.next is None:
-        #     removed = self.head
-        #     self.head = None
-        #     self.tail = None
-        #     self.length = 0
-        #     return removed.value
-
-        # removed = self.head
-        # self.head = self.head.next
-        # self.head.prev = None
-        # self.length -= 1
-        # return removed.value
-
     """Wraps the given value in a ListNode and inserts it 
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
@@ -108,97 +90,60 @@ class DoublyLinkedList:
         self.delete(self.tail)
         return value
 
-        # WITHOUT A DELETE METHOD
-        # if self.head is None:
-        #     self.tail = None
-        #     return None
-
-        # if self.head.next is None:
-        #     removed = self.head
-        #     self.head = None
-        #     self.tail = None
-        #     self.length = 0
-        #     return removed.value
-
-        # current = self.head
-        # while current.next is not None:
-        #     current = current.next
-        
-        # current.prev.next = None
-        # self.length -= 1
-        # return current.value
-
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
+        if node is self.head:
+          return
+        
         value = node.value
-        self.delete(node)
+
+        if node is self.tail:
+          self.remove_from_tail()
+        else:
+          node.delete()
+          self.length -= 1
+
         self.add_to_head(value)
-
-        # WITHOUT A DELETE METHOD
-        # if node is self.head:
-        #     return
-
-        # value = node.value
-        # current = self.head
-
-        # while current.next is not None:
-        #     if current.value == value:
-        #         break
-        #     current = current.next
-
-        # if current.next is None:
-        #     current.prev.next = None
-        # else:
-        #     current.prev.next = current.next
-        #     current.next.prev = current.prev
-
-        # self.add_to_head(value)
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
     def move_to_end(self, node):
+        if node is self.tail:
+          return
+
         value = node.value
-        self.delete(node)
-        self.add_to_tail(value)
 
-        # WITHOUT A DELETE METHOD
-        # if node is self.tail:
-        #     return
+        if node is self.head:
+          self.remove_from_head()
+        else:
+          node.delete()
+          self.length -= 1
 
-        # value = node.value
-        # current = self.head
-
-        # while current.next is not None:
-        #     if current.value == value:
-        #         break
-        #     current = current.next
-
-        # if current.next is None:
-        #     current.prev.next = None
-        # else:
-        #     current.prev.next = current.next
-        #     current.next.prev = current.prev
-
-        # self.add_to_tail(value)
+        self.add_to_tail(node)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
     def delete(self, node):
+        # If DLL is empty, there is nothing to delete so we should return
+        if self.head is None and self.tail is None:
+            return
+
         self.length -= 1
 
-        if self.head is None and self.tail is None:
-            return None
-
+        # If DLL has one element, remove it by setting head and tail to None
         if self.head is self.tail:
             self.head = None
             self.tail = None
+        # If element is head or tail, delete those and set them to be next or prev
         elif self.head is node:
             self.head = node.next
             node.delete()
         elif self.tail is node:
             self.tail = node.prev
             node.delete()
+        # If element is not head or tail, delete it by setting prev and next pointers to each other
+        # More than 3 nodes in DLL
         else:
             node.delete()
         
